@@ -10,6 +10,8 @@ export default function Form() {
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
 
+  //const dispatch = useDispatch();
+
   useEffect(() => {
     console.log("refresh");
   }, []);
@@ -43,7 +45,7 @@ export default function Form() {
     setPrice("");
     setSku("");
 
-    console.log(data);
+    return data;
   };
 
   return (
@@ -98,7 +100,9 @@ export default function Form() {
         }}
       >
         <Button
-          onClick={submitButton}
+          onClick={({ preventDefault }) => {
+            preventDefault();
+          }}
           style={{ fontSize: "1.4rem" }}
           variant="contained"
         >
