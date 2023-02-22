@@ -1,0 +1,9 @@
+body {
+  background-color: antiquewhite;
+}
+.App {
+  padding: 100px 0;
+  margin: 0 auto;
+  background-color: white;
+  width: 90%;
+}
