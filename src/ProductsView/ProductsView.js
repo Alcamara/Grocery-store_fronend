@@ -31,37 +31,36 @@ export default function ProductView() {
 
 const products = useSelector(store => store.products)
 
-
-
-  return (
-    <div style={{padding:"60px 0", width: '80%', margin: "0 auto"}}>
+const table = (
+    <div style={{padding:"60px 0", width: '60%', margin: "0 auto"}}>
         <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650 }} aria-label="simple table">
+      <Table sx={{ minWidth: 250 }} aria-label="simple table">
         <TableHead>
           <TableRow>
             <TableCell>SKU</TableCell>
             <TableCell align="right">Description</TableCell>
             <TableCell align="right">Price</TableCell>
-            
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
+          {products.map((product) => (
             <TableRow
-              key={row.name}
+              key={product.sku}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
               <TableCell component="th" scope="row">
-                {row.name}
+                {product.sku}
               </TableCell>
-              <TableCell align="right">{row.calories}</TableCell>
-              <TableCell align="right">{row.fat}</TableCell>
+              <TableCell align="right">{product.description}</TableCell>
+              <TableCell align="right">{product.price}</TableCell>
             </TableRow>
           ))}
         </TableBody>
       </Table>
     </TableContainer>
-    </div>
+    </div>)
+
+  return !products ? (<div>Loading</div>) : table
     
-  );
+  
 }
